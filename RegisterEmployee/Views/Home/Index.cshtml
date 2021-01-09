@@ -1,0 +1,93 @@
+﻿@model RegisterEmployee.Models.Employee;
+@{
+    ViewData["Title"] = "InsertEmployee";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <br />
+    <fieldset>
+        <legend>Create Employee</legend>
+        <div>
+            @Html.LabelFor(model => model.FirstName)
+        </div>
+        <div>
+            @Html.EditorFor(model => model.FirstName)
+            @Html.ValidationMessageFor(model => model.FirstName)
+        </div>
+        <div>
+            @Html.LabelFor(model => model.LastName)
+        </div>
+        <div>
+            @Html.EditorFor(model => model.LastName)
+            @Html.ValidationMessageFor(model => model.LastName)
+        </div>
+        <div>
+            @Html.LabelFor(model => model.Password)
+        </div>
+        <div>
+            @Html.EditorFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+        <div>
+            @Html.LabelFor(model => model.ConfirmPassword)
+        </div>
+        <div>
+            @Html.EditorFor(model => model.ConfirmPassword)
+            @Html.ValidationMessageFor(model => model.ConfirmPassword)
+        </div>
+        <div>
+            @Html.LabelFor(model => model.EmailID)
+        </div>
+        <div>
+            @Html.EditorFor(model => model.EmailID)
+            @Html.ValidationMessageFor(model => model.EmailID)
+        </div>
+        <div>
+            @Html.LabelFor(model => model.Mobile)
+        </div>
+        <div>
+            @Html.EditorFor(model => model.Mobile)
+            @Html.ValidationMessageFor(model => model.Mobile)
+        </div>
+        <div>
+            @Html.LabelFor(model => model.SecurityQuestion)
+        </div>
+        <div>
+            @*@Html.EditorFor(model => model.SecurityQuestion)*@
+            @Html.DropDownList("SecurityQuestion", new List<SelectListItem>
+
+                 {
+                    new SelectListItem{ Text="City", Value = "City" },
+                    new SelectListItem{ Text="Sport", Value = "Sport" },
+                    new SelectListItem{ Text="Car", Value = "Car" }
+                 })
+            @Html.ValidationMessageFor(model => model.SecurityQuestion)
+        </div>
+
+        <div>
+            @Html.LabelFor(model => model.Answer)
+        </div>
+        <div>
+            @Html.EditorFor(model => model.Answer)
+            @Html.ValidationMessageFor(model => model.Answer)
+        </div>
+        <br />
+        <p>
+            <input class="btn btn-success" type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<script type="text/javascript">
+    debugger;
+    // Better to keep a Bootstrap popup than jAlert!
+
+    var result = '@(TempData["Result"])';
+    if (result != '' && result != null) {
+        alert(result);
+        window.location.href = "/Home/Index";
+    }
+</script>

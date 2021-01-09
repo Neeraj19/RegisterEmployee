@@ -1,0 +1,28 @@
+﻿USE [Database_Dev]
+GO
+
+/****** Object:  Table [dbo].[Employee]    Script Date: 09/01/2021 13:27:21 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Employee](
+	[EmployeeID] [int] IDENTITY(1,1) NOT NULL,
+	[FirstName] [varchar](100) NULL,
+	[LastName] [varchar](100) NULL,
+	[Password] [varchar](100) NULL,
+	[ConfirmPassword] [varchar](100) NULL,
+	[EmailID] [varchar](100) NULL,
+	[Mobile] [varchar](10) NULL,
+	[SecurityQuestion] [varchar](100) NULL,
+	[Answer] [varchar](100) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[EmployeeID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+

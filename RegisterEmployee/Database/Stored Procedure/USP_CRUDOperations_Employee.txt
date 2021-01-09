@@ -1,0 +1,47 @@
+﻿CREATE PROCEDURE USP_SecurityQuestion
+(
+@EmployeeID INT
+,@FirstName VARCHAR(100) = NULL
+,@LastName VARCHAR(100) = NULL
+,@Password VARCHAR(100) = NULL
+,@ConfirmPassword VARCHAR(100) = NULL
+,@EmailID VARCHAR(15) = NULL
+,@Mobile VARCHAR(15) = NULL
+,@SecurityQuestion VARCHAR(300) = NULL
+,@Answer VARCHAR(100) =  NULL
+,@Operation VARCHAR(20) = NULL
+)
+AS
+BEGIN
+
+	/*
+		-------- Declaring Variables for Testing --------
+
+		DECLARE		@EmpID INT = 1
+					,@FirstName VARCHAR(100) = 'Neeraj'
+					,@LastName VARCHAR(100) = 'Chand'
+					,@Password VARCHAR(100) = '123'
+					,@ConfirmPassword VARCHAR(100) = '123'
+					,@Mobile VARCHAR(15) = 1234567890
+					,@EmailID VARCHAR(15) = 'ABC@gmail.com'
+					,@SecurityQuestion VARCHAR(300) = 'City'
+					,@Answer VARCHAR(100) = 'Pune'
+					,@Operation VARCHAR(20) = 'INSERT'
+
+	*/
+
+	IF(@Operation = 'Create')
+	BEGIN
+			INSERT INTO Employee([FirstName],[LastName],[Password],[ConfirmPassword],[Mobile],[EmailID],[SecurityQuestion],[Answer])
+			SELECT @FirstName,@LastName,@Password,@ConfirmPassword,@Mobile,@EmailID,@SecurityQuestion,@Answer
+
+			IF (@@ROWCOUNT > 0)
+			BEGIN
+				SELECT 'Inserted Employee Record successfully!' AS Result
+			END
+
+	END
+	ELSE
+		SELECT 'Something Went Wrong!!!' AS Result
+
+END
